@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hamburger menu</title>
+    <style>
+      .toggle {
+        position: absolute;
+        top: 5px;
+        width: 60px;
+        height: 60px;
+        z-index: 3;
+        opacity: 0;
+        cursor: pointer;
+      }
+
+      .hamburger-menu {
+        position: absolute;
+        top: 5px;
+        height: 60px;
+        width: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 2;
+      }
+
+      .hamburger-menu > div {
+        height: 3px;
+        width: 60%;
+        background-color: #333;
+        position: absolute;
+        transition: 0.3s;
+      }
+
+      .hamburger-menu > div:before {
+        content: "";
+        height: 3px;
+        width: 100%;
+        position: absolute;
+        top: -10px;
+        background-color: #333;
+        transition: 0.3s;
+      }
+      .hamburger-menu > div:after {
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: #333;
+        bottom: -10px;
+        position: absolute;
+        transition: 0.3s;
+      }
+      .toggle:checked + .hamburger-menu > div {
+        transform: rotate(135deg);
+      }
+      .toggle:checked + .hamburger-menu > div:before,
+      .toggle:checked + .hamburger-menu > div:after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+
+      .menu-content {
+        background-color: cadetblue;
+        color: aliceblue;
+        width: 100%;
+        height: 100vh;
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        transform: translateX(-100%);
+        transition: 0.3s;
+      }
+
+      body {
+        padding: 0;
+        margin: 0;
+      }
+
+      .menu-content > ul > li {
+        list-style: none;
+        padding: 5px;
+        font-size: 20px;
+      }
+      .toggle:checked ~ .menu-content {
+        transform: translateX(0%);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="menu-area">
+      <input type="checkbox" class="toggle" />
+      <div class="hamburger-menu">
+        <div></div>
+      </div>
+      <div class="menu-content">
+        <ul>
+          <li>Home</li>
+          <li>About us</li>
+          <li>Services</li>
+          <li>FAQ'S</li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
